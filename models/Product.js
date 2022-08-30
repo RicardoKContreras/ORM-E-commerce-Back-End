@@ -23,9 +23,9 @@ Product.init(
       allowNull: false
     },
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.FLOAT,
       allowNull: false,
-      validate: {
+      validate : {
         isDecimal: true
       }
     },
@@ -34,7 +34,8 @@ Product.init(
       allowNull: false,
       defaultValue: 10,
       validate: {
-        isNumeric: true
+        isNumeric: true,
+        
       }
     },
     category_id: {
@@ -49,6 +50,7 @@ Product.init(
     underscored: true,
     modelName: 'product',
   }
+  
 );
 
 module.exports = Product;
