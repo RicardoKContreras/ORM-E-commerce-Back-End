@@ -8,7 +8,13 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    //  attributes: {include: [Category.categoryData.category_name]}
+    attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+    include : [
+      {
+        model: Category,
+        attributes: ['id', 'category_name']
+      }
+    ]
   })
   .then(dbProductData => res.json(dbProductData))
   .catch(err => {
@@ -21,6 +27,24 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.findOne({
+    // attributes: {exclude: ['password'] },
+    where: {
+        id: req.params.id
+    }
+})
+.then(dbProductData => {
+    if (!dbProductData){
+        res.status(404).json({message: 'No user found with this id'});
+        return;
+    }
+    res.json(dbProductData);
+})
+.catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+});
+
 });
 
 // create new product
@@ -33,7 +57,13 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
+  Product.create({
+    product_name: req.body.product_name,
+    price: req.body,price,
+    stock: req.body.stock,
+    category_id: req.body.category_id
+  })
+
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
