@@ -55,20 +55,6 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name
   })
-  // .then((tag) => {
-  //   // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-  //   if (req.body.products.length) {
-  //     const productTagIdArr = req.body.products.map((product_id) => {
-  //       return {
-  //         product_id: product_id,
-  //         tag_id: tag.id
-  //       };
-  //     });
-  //     return ProductTag.bulkCreate(productTagIdArr);
-  //   }
-  //   // if no product tags, just respond
-  //   res.status(200).json(product);
-  // })
   .then(dbCategoryData => {
     if(productid) {
    for (let i = 0; i < productid.length; i++){
