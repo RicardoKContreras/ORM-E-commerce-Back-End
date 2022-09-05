@@ -33,3 +33,18 @@ THEN I am able to successfully create, update, and delete data in my database
 
 - Walkthrough video: https://drive.google.com/file/d/1XaYfYnyj7K9GjJEM3I2KIm6-Sxlwms59/view
 Might have to download if video is still  processing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Preview image : ![image](https://user-images.githubusercontent.com/104086686/188513289-fa1ab7d1-f8c1-487d-a2c8-de137fa60ac7.png)
+
