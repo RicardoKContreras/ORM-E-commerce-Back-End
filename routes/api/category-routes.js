@@ -50,34 +50,36 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // create a new category
-  var productid = req.body.productsId;
-  Category.create({
-    category_name: req.body.category_name
-  })
-  .then(dbCategoryData => {
-    if(productid) {
-   for (let i = 0; i < productid.length; i++){
-     Product.update({
-      category_id: dbCategoryData.id,
-      },
-      {
-      where: {
-      id: productid[i]
-    }})
-  }
-}
-    res.json(dbCategoryData)
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
-});
+   // create a new category
+   var productid = req.body.products;
+   Category.create({
+     category_name: req.body.category_name
+   })
+   .then(dbCategoryData => {
+     if(productid) {
+    for (let i = 0; i < productid.length; i++){
+      Product.update({
+       category_id: dbCategoryData.id,
+       },
+       {
+       where: {
+       id: productid[i]
+     }})
+   }
+ }
+     res.json(dbCategoryData)
+   })
+   .catch(err => {
+     console.log(err);
+     res.status(500).json(err);
+   })
+  
+  });
+
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  var productId = req.body.productsId;
+  var productId = req.body.products;
   Category.update(req.body, {
 
     where: {
