@@ -29,3 +29,7 @@ THEN I am able to successfully create, update, and delete data in my database
 - Using the `MySQL2` and `Sequelize` packages to connect `Express.js API to MYSQL database`
 - Syncing the the `Sequelize models to the MySQL` database by the created code inside `server.js`
 -run `npm run seed` in the terminal to seed the database
+
+
+- Walkthrough video: https://drive.google.com/file/d/1XaYfYnyj7K9GjJEM3I2KIm6-Sxlwms59/view
+Might have to download if video is still  processing.
